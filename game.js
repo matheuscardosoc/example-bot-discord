@@ -1,4 +1,4 @@
-import { capitalize } from './utils.js';
+import { capitalize, getRandomEmoji } from './utils.js';
 
 export function getResult(p1, p2) {
   let gameResult;
@@ -31,52 +31,52 @@ function formatResult(result) {
   const { win, lose, verb } = result;
   return verb === 'tie'
     ? `<@${win.id}> and <@${lose.id}> draw with **${win.objectName}**`
-    : `<@${win.id}>'s **${win.objectName}** ${verb} <@${lose.id}>'s **${lose.objectName}**`;
+    : `<**${win.objectName}** de @${win.id}>' ${verb} **${lose.objectName}** de <@${lose.id}>! ${getRandomEmoji()}`;
 }
 
 // this is just to figure out winner + verb
 const RPSChoices = {
-  rock: {
-    description: 'sedimentary, igneous, or perhaps even metamorphic',
-    virus: 'outwaits',
-    computer: 'smashes',
-    scissors: 'crushes',
+  pedra: {
+    description: 'sedimentar, ígnea ou talvez até metamórfica',
+    virus: 'espera pacientemente até vencer',
+    computador: 'esmaga',
+    tesoura: 'quebra',
   },
   cowboy: {
-    description: 'yeehaw~',
-    scissors: 'puts away',
-    wumpus: 'lassos',
-    rock: 'steel-toe kicks',
+    description: 'yee-haw~',
+    tesoura: 'guarda',
+    wumpus: 'laça',
+    pedra: 'chuta com biqueira de aço',
   },
-  scissors: {
-    description: 'careful ! sharp ! edges !!',
-    paper: 'cuts',
-    computer: 'cuts cord of',
-    virus: 'cuts DNA of',
+  tesoura: {
+    description: 'cuidado! arestas afiadas!!',
+    papel: 'corta',
+    computador: 'corta o cabo de',
+    virus: 'corta o DNA de',
   },
   virus: {
-    description: 'genetic mutation, malware, or something inbetween',
-    cowboy: 'infects',
-    computer: 'corrupts',
-    wumpus: 'infects',
+    description: 'mutação genética, malware, ou algo entre os dois',
+    cowboy: 'infecta',
+    computador: 'corrompe',
+    wumpus: 'infecta',
   },
-  computer: {
-    description: 'beep boop beep bzzrrhggggg',
-    cowboy: 'overwhelms',
-    paper: 'uninstalls firmware for',
-    wumpus: 'deletes assets for',
+  computador: {
+    description: 'bip bop bip bzzrrhggggg',
+    cowboy: 'sobrecarrega',
+    papel: 'desinstala o firmware de',
+    wumpus: 'deleta os arquivos de',
   },
   wumpus: {
-    description: 'the purple Discord fella',
-    paper: 'draws picture on',
-    rock: 'paints cute face on',
-    scissors: 'admires own reflection in',
+    description: 'o mascote roxo do Discord',
+    papel: 'desenha uma imagem em',
+    pedra: 'pinta um rostinho fofo em',
+    tesoura: 'admira o próprio reflexo em',
   },
-  paper: {
-    description: 'versatile and iconic',
-    virus: 'ignores',
-    cowboy: 'gives papercut to',
-    rock: 'covers',
+  papel: {
+    description: 'versátil e icônico',
+    virus: 'ignora',
+    cowboy: 'dá um corte de papel em',
+    pedra: 'cobre',
   },
 };
 

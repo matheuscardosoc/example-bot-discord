@@ -38,6 +38,12 @@ const CHALLENGE_COMMAND = {
       required: true,
       choices: createCommandChoices(),
     },
+    {
+      type: 6, // USER
+      name: 'user',
+      description: 'Optionally choose a user to challenge',
+      required: false,
+    },
   ],
   type: 1,
   integration_types: [0, 1],
