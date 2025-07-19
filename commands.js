@@ -20,7 +20,7 @@ function createCommandChoices() {
 // Simple test command
 const TEST_COMMAND = {
   name: 'test',
-  description: 'Basic command',
+  description: 'Comando de teste',
   type: 1,
   integration_types: [0, 1],
   contexts: [0, 1, 2],
@@ -29,19 +29,19 @@ const TEST_COMMAND = {
 // Command containing options
 const CHALLENGE_COMMAND = {
   name: 'challenge',
-  description: 'Challenge to a match of rock paper scissors',
+  description: 'Desafia alguem para uma partida de pedra papel tesoura',
   options: [
     {
       type: 3,
-      name: 'object',
-      description: 'Pick your object',
+      name: 'objeto',
+      description: 'Escolha seu objeto',
       required: true,
       choices: createCommandChoices(),
     },
     {
       type: 6, // USER
       name: 'user',
-      description: 'Optionally choose a user to challenge',
+      description: 'Escolha um usuário para desafiar',
       required: false,
     },
   ],

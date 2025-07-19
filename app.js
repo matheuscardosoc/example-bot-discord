@@ -80,9 +80,13 @@ app.post(
         // User ID is in user field for (G)DMs, and member for servers
         const userId = context === 0 ? req.body.member.user.id : req.body.user.id;
         // user ID player 2
-        const userId2 = 0;
-        if (data.options > 1)
+        let userId2 = '';
+        let contentText = 'Desafio de pedra papel tesoura';
+        if (data.options.length > 1) {
           userId2 = data.options[1].value;
+          contentText += ` de <@${userId}> para <@${userId2}>`;
+        }
+        contentText += '!';
         // User's object choice
         const objectName = req.body.data.options[0].value;
 
@@ -101,7 +105,7 @@ app.post(
               {
                 type: MessageComponentTypes.TEXT_DISPLAY,
                 // Fetches a random emoji to send from a helper function
-                content: `Desafio de pedra papel tesoura de <@${userId}> para <@${userId2}>!`,
+                content: contentText,
               },
               {
                 type: MessageComponentTypes.ACTION_ROW,
@@ -140,7 +144,7 @@ app.post(
         const userId2 = activeGames[gameId].id2;
 
         // id user not authorized clicked
-        if (userId2 != userId) {
+        if (userId2 != userId && userId2 != '') {
           await res.send({
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {

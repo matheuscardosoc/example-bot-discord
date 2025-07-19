@@ -30,8 +30,8 @@ export function getResult(p1, p2) {
 function formatResult(result) {
   const { win, lose, verb } = result;
   return verb === 'tie'
-    ? `<@${win.id}> and <@${lose.id}> draw with **${win.objectName}**`
-    : `<**${win.objectName}** de @${win.id}>' ${verb} **${lose.objectName}** de <@${lose.id}>! ${getRandomEmoji()}`;
+    ? `<@${win.id}> e <@${lose.id}> empataram com **${win.objectName}**`
+    : `**${win.objectName}** de <@${win.id}> ${verb} **${lose.objectName}** de <@${lose.id}>! ${getRandomEmoji()}`;
 }
 
 // this is just to figure out winner + verb
@@ -46,13 +46,13 @@ const RPSChoices = {
     description: 'yee-haw~',
     tesoura: 'guarda',
     wumpus: 'laça',
-    pedra: 'chuta com biqueira de aço',
+    pedra: 'chuta com a biqueira de aço a',
   },
   tesoura: {
     description: 'cuidado! arestas afiadas!!',
     papel: 'corta',
-    computador: 'corta o cabo de',
-    virus: 'corta o DNA de',
+    computador: 'corta o cabo do',
+    virus: 'corta o DNA do',
   },
   virus: {
     description: 'mutação genética, malware, ou algo entre os dois',
@@ -63,19 +63,19 @@ const RPSChoices = {
   computador: {
     description: 'bip bop bip bzzrrhggggg',
     cowboy: 'sobrecarrega',
-    papel: 'desinstala o firmware de',
-    wumpus: 'deleta os arquivos de',
+    papel: 'desinstala o firmware do',
+    wumpus: 'deleta os arquivos do',
   },
   wumpus: {
     description: 'o mascote roxo do Discord',
-    papel: 'desenha uma imagem em',
-    pedra: 'pinta um rostinho fofo em',
-    tesoura: 'admira o próprio reflexo em',
+    papel: 'desenha uma imagem no',
+    pedra: 'pinta um rostinho fofo na',
+    tesoura: 'admira o próprio reflexo na',
   },
   papel: {
     description: 'versátil e icônico',
     virus: 'ignora',
-    cowboy: 'dá um corte de papel em',
+    cowboy: 'faz um corte no dedo do',
     pedra: 'cobre',
   },
 };
