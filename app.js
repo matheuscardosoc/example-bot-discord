@@ -141,7 +141,25 @@ app.post(
         const gameId = componentId.replace("accept_button_", "");
 
         // get the id user2
-        const userId2 = activeGames[gameId].id2;
+        let userId2 = '';
+        try{
+          userId2 = activeGames[gameId].id2;
+        }catch{}
+
+        const activeGame = activeGames[gameId];
+
+        // Game not found
+        if (activeGame === undefined) {
+          await res.send({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content:
+                "Jogo não existe mais!",
+              flags: InteractionResponseFlags.EPHEMERAL, // Ephemeral message (só o usuário vê)
+            },
+          });
+          return;
+        }
 
         // id user not authorized clicked
         if (userId2 != userId && userId2 != '') {
@@ -149,7 +167,7 @@ app.post(
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
               content: "Esta proposta foi feita para outro usuário. Você não pode aceitar essa proposta!",
-              flags: 64, // Ephemeral message (só o usuário vê)
+              flags: InteractionResponseFlags.EPHEMERAL, // Ephemeral message (só o usuário vê)
             },
           });
 
